@@ -24,3 +24,18 @@ int Classroom::getEnrolledStudentsCount() const {
     return EnrolledStudents.size();  
 } 
 
+void Classroom::saveToFile() const {  
+    ofstream file("yekestan.txt", ios::app); 
+    if (file.is_open()) {
+      file << course.getCourseCode() << endl; 
+      int numStudents = EnrolledStudents.size();  
+      file << numStudents << endl; 
+      for (int id : EnrolledStudents) {  
+        file << id << endl;
+      }
+      file.close();
+    }  
+    else{
+        cout << "Unable to open file for writing." << endl; 
+    }
+}  
