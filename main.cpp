@@ -117,4 +117,26 @@ int main() {
         }  
     }  
 
+    ofstream outFile("yekestan.txt");  
+    if (outFile.is_open()) {  
+        for (const auto &user : users) {  
+            user->saveToFile(outFile);  
+        }  
+        for (const auto &classroom : classrooms) {  
+            classroom->saveToFile(outFile);  
+        }  
+        outFile.close();  
+    } else {  
+        cout << "Error opening file!" << endl;  
+    }  
+ 
+    for (auto user : users) {  
+        delete user;  
+    }  
+    for (auto classroom : classrooms) {  
+        delete classroom;  
+    }  
+
+    return 0;
+
 }
