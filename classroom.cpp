@@ -39,3 +39,27 @@ void Classroom::saveToFile() const {
         cout << "Unable to open file for writing." << endl; 
     }
 }  
+
+void Classroom::loadFromFile() {  
+    ifstream file("yekestan.txt");  
+    if (file.is_open()) {  
+        while (!file.eof()) {  
+            string code;  
+            file >> code;  
+            file.ignore(); 
+            
+            int numStudents;  
+            file >> numStudents;  
+            file.ignore(); 
+            EnrolledStudents.clear(); 
+            for (int i = 0; i < numStudents; ++i) {  
+                int id;  
+                file >> id;  
+                EnrolledStudents.push_back(id);  
+            }
+        }  
+        file.close();  
+    } else {  
+        cout << "Unable to open file for reading." << endl;  
+    }  
+} 
