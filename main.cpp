@@ -91,4 +91,30 @@ int main() {
             } while (choice != 4);  
         } 
 
+        else if (userType == 2) {  
+            Professor *professor = dynamic_cast<Professor *>(users.back());  
+            int choice;  
+            do {  
+                cout << "1. Show Enrolled Students in a Course" << endl;  
+                cout << "2. Exit" << endl;  
+                cout << "Choose an option: ";  
+                cin >> choice;  
+
+                if (choice == 1) {  
+                    int courseIndex;  
+                    cout << "Choose a course to show enrolled students (0 for Math, 1 for Science): ";  
+                    cin >> courseIndex;  
+
+                    if (courseIndex >= 0 && courseIndex < classrooms.size()) {  
+                        professor->showEnrolledStudents(*classrooms[courseIndex]);  
+                    } else {  
+                        cout << "Invalid course selection!" << endl;  
+                    }  
+                } else if (choice != 2) {  
+                    cout << "Invalid choice. Please try again." << endl;  
+                }  
+            } while (choice != 2);  
+        }  
+    }  
+
 }
